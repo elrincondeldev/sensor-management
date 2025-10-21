@@ -1,0 +1,107 @@
+[
+  {
+    "id": "sensor-001",
+    "nombre": "Sensor de Temperatura - Sala Principal",
+    "tipo": "temperatura",
+    "valor": 23.5,
+    "estado": true
+  },
+  {
+    "id": "sensor-002",
+    "nombre": "Sensor de Humedad - Almacén",
+    "tipo": "humedad",
+    "valor": 65.2,
+    "estado": true
+  },
+  {
+    "id": "sensor-003",
+    "nombre": "Sensor de Presión - Sistema Hidráulico",
+    "tipo": "presión",
+    "valor": 101.3,
+    "estado": true
+  },
+  {
+    "id": "sensor-004",
+    "nombre": "Sensor de Temperatura - Servidor",
+    "tipo": "temperatura",
+    "valor": 45.8,
+    "estado": false
+  },
+  {
+    "id": "sensor-005",
+    "nombre": "Sensor de Humedad - Sala Limpia",
+    "tipo": "humedad",
+    "valor": 42.0,
+    "estado": true
+  },
+  {
+    "id": "sensor-006",
+    "nombre": "Sensor de Luminosidad - Oficina A",
+    "tipo": "luminosidad",
+    "valor": 450.0,
+    "estado": true
+  },
+  {
+    "id": "sensor-007",
+    "nombre": "Sensor de Presión - Tanque Principal",
+    "tipo": "presión",
+    "valor": 98.7,
+    "estado": true
+  },
+  {
+    "id": "sensor-008",
+    "nombre": "Sensor de Temperatura - Congelador",
+    "tipo": "temperatura",
+    "valor": -18.3,
+    "estado": true
+  },
+  {
+    "id": "sensor-009",
+    "nombre": "Sensor de CO2 - Oficina B",
+    "tipo": "co2",
+    "valor": 420.5,
+    "estado": false
+  },
+  {
+    "id": "sensor-010",
+    "nombre": "Sensor de Movimiento - Entrada",
+    "tipo": "movimiento",
+    "valor": 1.0,
+    "estado": true
+  },
+  {
+    "id": "sensor-011",
+    "nombre": "Sensor de Temperatura - Aire Acondicionado",
+    "tipo": "temperatura",
+    "valor": 21.0,
+    "estado": true
+  },
+  {
+    "id": "sensor-012",
+    "nombre": "Sensor de Humedad - Exterior",
+    "tipo": "humedad",
+    "valor": 78.5,
+    "estado": true
+  },
+  {
+    "id": "sensor-013",
+    "nombre": "Sensor de Presión - Compresor",
+    "tipo": "presión",
+    "valor": 105.2,
+    "estado": false
+  },
+  {
+    "id": "sensor-014",
+    "nombre": "Sensor de Vibración - Motor A",
+    "tipo": "vibración",
+    "valor": 2.3,
+    "estado": true
+  },
+  {
+    "id": "sensor-015",
+    "nombre": "Sensor de Temperatura - Caldera",
+    "tipo": "temperatura",
+    "valor": 85.0,
+    "estado": true
+  }
+]
