@@ -1,9 +1,9 @@
-import type { User } from "@entities/user/types";
+import type { User } from "../../../entities/user/types";
 import type {
   LoginData,
   RegisterData,
   StoredAuthUser,
-} from "@features/auth/model/types";
+} from "../../../features/auth/model/types";
 
 const AUTH_STORAGE_KEY = "auth_user";
 const USERS_STORAGE_KEY = "registered_users";

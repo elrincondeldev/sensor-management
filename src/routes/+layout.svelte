@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import Header from '@widgets/header/Header.svelte';
 		
 	let { children } = $props();
 </script>
@@ -8,4 +9,9 @@
 	<link rel="icon" href="@/assets/favicon.svg" />
 </svelte:head>
 
-{@render children?.()}
+<div class="min-h-screen">
+	<Header />
+	<main>
+		{@render children?.()}
+	</main>
+</div>
