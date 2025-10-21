@@ -76,7 +76,7 @@
 			<TableBody>
 				{#each sensors as sensor (sensor.id)}
 					<TableRow>
-						<TableCell class="font-medium min-w-[8rem] max-w-[12rem]">{sensor.name}</TableCell>
+						<TableCell class="font-medium min-w-32 max-w-48">{sensor.name}</TableCell>
 						<TableCell>
 							<span class={getValueColor(sensor.type, sensor.value)}>
 								{sensor.value.toFixed(1)} {getUnit(sensor.type)}

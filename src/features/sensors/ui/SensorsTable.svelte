@@ -7,16 +7,15 @@
 	import SensorCardsView from './SensorCardsView.svelte';
 	import SensorDialog from './SensorDialog.svelte';
 	import DeleteConfirmDialog from './DeleteConfirmDialog.svelte';
-	import { createSensor, updateSensor, deleteSensor } from '$lib/hooks/sensorStorage';
-	import { natsClient, SUBJECTS } from '$lib/services/nats-simulator';
+	import { 
+		sensorsStore, 
+		createSensor, 
+		updateSensor, 
+		deleteSensor,
+		subscribeToSensorUpdates 
+	} from '@features/sensors/model/store';
 
-	interface Props {
-		initialSensors: Sensor[];
-	}
-
-	let { initialSensors }: Props = $props();
-
-	let sensors = $state<Sensor[]>(initialSensors);
+	let sensors = $derived($sensorsStore);
 	let searchTerm = $state('');
 	let selectedType = $state<SensorType | 'all'>('all');
 	let sortBy = $state<'name' | 'value' | 'active'>('name');
@@ -125,24 +124,7 @@
 		selectedSensor = undefined;
 	}
 	onMount(() => {
-		const unsubscribe = natsClient.subscribe(SUBJECTS.SENSOR_UPDATES, (message) => {
-			switch (message.action) {
-				case 'create':
-					if (!sensors.find((s) => s.id === message.sensor.id)) {
-						sensors = [...sensors, message.sensor];
-					}
-					break;
-				case 'update':
-					sensors = sensors.map((s) =>
-						s.id === message.sensor.id ? message.sensor : s
-					);
-					break;
-				case 'delete':
-					sensors = sensors.filter((s) => s.id !== message.sensor.id);
-					break;
-			}
-		});
-
+		const unsubscribe = subscribeToSensorUpdates();
 		return unsubscribe;
 	});
 </script>

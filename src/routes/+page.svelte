@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { authStore, isAuthenticated } from '@features/auth/model/store';
 	import SensorsTable from '@features/sensors/ui/SensorsTable.svelte';
-	import { getSensors } from '$lib/hooks/sensorStorage';
+	import { initializeSensorsStore } from '@features/sensors/model/store';
 
-	const initialSensors = getSensors();
+	onMount(() => {
+		initializeSensorsStore();
+	});
 </script>
 
 <svelte:head>
@@ -19,7 +22,7 @@
 			</p>
 		</div>
 	
-		<SensorsTable {initialSensors} />
+		<SensorsTable />
 	{:else}
 		<div class="max-w-2xl mx-auto text-center space-y-6">
 			<h1 class="text-4xl font-bold">You are not authenticated</h1>
