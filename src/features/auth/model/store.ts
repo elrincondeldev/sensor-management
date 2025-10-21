@@ -1,6 +1,6 @@
 import { writable, derived } from "svelte/store";
 import { browser } from "$app/environment";
-import { getCurrentUser } from "@shared/lib/hooks/localStorage";
+import { getCurrentUser } from "@/shared/lib/hooks/authStorage";
 import type { User } from "@entities/user/types";
 
 export const authStore = writable<User | null>(

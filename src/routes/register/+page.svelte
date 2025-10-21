@@ -11,15 +11,15 @@
 </script>
 
 <svelte:head>
-	<title>Registrarse</title>
+	<title>Register</title>
 </svelte:head>
 
 <div class="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12">
 	<div class="w-full max-w-md">
 		<Card>
 			<CardHeader>
-				<CardTitle>Crear una cuenta</CardTitle>
-				<CardDescription>Ingresa tus datos para registrarte</CardDescription>
+				<CardTitle>Register</CardTitle>
+				<CardDescription>Enter your data to register</CardDescription>
 			</CardHeader>
 			<CardContent>
 				<RegisterForm />

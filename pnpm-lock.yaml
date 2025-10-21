@@ -18,8 +18,8 @@ importers:
         specifier: ^3.8.1
         version: 3.10.0
       '@lucide/svelte':
-        specifier: ^0.546.0
-        version: 0.546.0(svelte@5.41.1)
+        specifier: ^0.544.0
+        version: 0.544.0(svelte@5.41.1)
       '@sveltejs/adapter-auto':
         specifier: ^6.1.0
         version: 6.1.1(@sveltejs/kit@2.47.2(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.41.1)(vite@7.1.11(@types/node@20.19.22)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.41.1)(vite@7.1.11(@types/node@20.19.22)(jiti@2.6.1)(lightningcss@1.30.2)))
@@ -33,13 +33,13 @@ importers:
         specifier: ^4.1.13
         version: 4.1.15(vite@7.1.11(@types/node@20.19.22)(jiti@2.6.1)(lightningcss@1.30.2))
       '@types/node':
-        specifier: ^20
+        specifier: ^20.19.22
         version: 20.19.22
       '@vitest/browser':
         specifier: ^3.2.4
         version: 3.2.4(playwright@1.56.1)(vite@7.1.11(@types/node@20.19.22)(jiti@2.6.1)(lightningcss@1.30.2))(vitest@3.2.4)
       bits-ui:
-        specifier: ^2.11.0
+        specifier: ^2.14.0
         version: 2.14.0(@internationalized/date@3.10.0)(@sveltejs/kit@2.47.2(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.41.1)(vite@7.1.11(@types/node@20.19.22)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.41.1)(vite@7.1.11(@types/node@20.19.22)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.41.1)
       clsx:
         specifier: ^2.1.1
@@ -363,8 +363,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@lucide/svelte@0.546.0':
-    resolution: {integrity: sha512-qFVQ+BUJH9Swns7cag3Wik7VqKZfN2hwDZ2VazbZJc8VSqI0kgOZCZ2OVwrvNxdkl8Mw9M9H1ROB0BXh/WH/sA==}
+  '@lucide/svelte@0.544.0':
+    resolution: {integrity: sha512-9f9O6uxng2pLB01sxNySHduJN3HTl5p0HDu4H26VR51vhZfiMzyOMe9Mhof3XAk4l813eTtl+/DYRvGyoRR+yw==}
     peerDependencies:
       svelte: ^5
 
@@ -1962,7 +1962,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lucide/svelte@0.546.0(svelte@5.41.1)':
+  '@lucide/svelte@0.544.0(svelte@5.41.1)':
     dependencies:
       svelte: 5.41.1
 

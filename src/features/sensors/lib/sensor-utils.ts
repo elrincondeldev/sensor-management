@@ -6,14 +6,14 @@ export function getSensorTypeLabel(type: SensorType): string {
 
 export function getValueColor(type: string, value: number): string {
 	switch (type) {
-		case 'temperatura':
+		case 'temperature':
 			if (value < 0) return 'text-blue-600';
 			if (value > 30) return 'text-red-600';
 			return 'text-green-600';
-		case 'humedad':
+		case 'humidity':
 			if (value < 30 || value > 70) return 'text-orange-600';
 			return 'text-green-600';
-		case 'presión':
+		case 'pressure':
 			if (value < 95 || value > 105) return 'text-orange-600';
 			return 'text-green-600';
 		default:
@@ -23,17 +23,17 @@ export function getValueColor(type: string, value: number): string {
 
 export function getUnit(type: string): string {
 	switch (type) {
-		case 'temperatura':
+		case 'temperature':
 			return '°C';
-		case 'humedad':
+		case 'humidity':
 			return '%';
-		case 'presión':
+		case 'pressure':
 			return 'kPa';
-		case 'luminosidad':
+		case 'luminosity':
 			return 'lux';
 		case 'co2':
 			return 'ppm';
-		case 'vibración':
+		case 'vibration':
 			return 'Hz';
 		default:
 			return '';

@@ -3,7 +3,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { goto } from '$app/navigation';
-	import { registerUser, loginUser } from '@shared/lib/hooks/localStorage';
+	import { registerUser, loginUser } from '@/shared/lib/hooks/authStorage';
 	import { refreshAuth } from '../model/store';
 
 	let email = $state('');
@@ -18,12 +18,12 @@
 		error = '';
 
 		if (password !== confirmPassword) {
-			error = 'Las contraseñas no coinciden';
+			error = 'The passwords do not match';
 			return;
 		}
 
 		if (password.length < 6) {
-			error = 'La contraseña debe tener al menos 6 caracteres';
+			error = 'The password must be at least 6 characters';
 			return;
 		}
 
@@ -33,7 +33,7 @@
 			refreshAuth();
 			goto('/');
 		} catch (e) {
-			error = e instanceof Error ? e.message : 'Error al registrarse';
+			error = e instanceof Error ? e.message : 'Error registering';
 		}
 	}
 </script>
@@ -41,11 +41,11 @@
 <form onsubmit={handleSubmit} class="space-y-4">
 	<div class="grid grid-cols-2 gap-4">
 		<div class="space-y-2">
-			<Label for="name">Nombre</Label>
+			<Label for="name">Name</Label>
 			<Input id="name" type="text" placeholder="Juan" bind:value={name} required />
 		</div>
 		<div class="space-y-2">
-			<Label for="lastName">Apellido</Label>
+			<Label for="lastName">Last name</Label>
 			<Input id="lastName" type="text" placeholder="Pérez" bind:value={lastName} required />
 		</div>
 	</div>
@@ -56,12 +56,12 @@
 	</div>
 
 	<div class="space-y-2">
-		<Label for="password">Contraseña</Label>
+		<Label for="password">Password</Label>
 		<Input id="password" type="password" placeholder="••••••••" bind:value={password} required />
 	</div>
 
 	<div class="space-y-2">
-		<Label for="confirmPassword">Confirmar contraseña</Label>
+		<Label for="confirmPassword">Confirm password</Label>
 		<Input id="confirmPassword" type="password" placeholder="••••••••" bind:value={confirmPassword} required />
 	</div>
 
@@ -71,9 +71,9 @@
 		</div>
 	{/if}
 
-	<Button type="submit" class="w-full">Crear cuenta</Button>
+	<Button type="submit" class="w-full">Register</Button>
 
 	<p class="text-center text-sm text-muted-foreground">
-		¿Ya tienes cuenta? <a href="/login" class="font-medium text-primary hover:underline">Inicia sesión</a>
+		Already have an account? <a href="/login" class="font-medium text-primary hover:underline">Login</a>
 	</p>
 </form>

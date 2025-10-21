@@ -3,7 +3,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { goto } from '$app/navigation';
-	import { loginUser } from '@shared/lib/hooks/localStorage';
+	import { loginUser } from '@/shared/lib/hooks/authStorage';
 	import { refreshAuth } from '../model/store';
 
 	let email = $state('');
@@ -19,7 +19,7 @@
 			refreshAuth();
 			goto('/');
 		} catch (e) {
-			error = e instanceof Error ? e.message : 'Error al iniciar sesión';
+			error = e instanceof Error ? e.message : 'Error logging in';
 		}
 	}
 </script>
@@ -31,7 +31,7 @@
 	</div>
 
 	<div class="space-y-2">
-		<Label for="password">Contraseña</Label>
+		<Label for="password">Password</Label>
 		<Input id="password" type="password" placeholder="••••••••" bind:value={password} required />
 	</div>
 
@@ -41,9 +41,9 @@
 		</div>
 	{/if}
 
-	<Button type="submit" class="w-full">Iniciar sesión</Button>
+	<Button type="submit" class="w-full">Login</Button>
 
 	<p class="text-center text-sm text-muted-foreground">
-		¿No tienes cuenta? <a href="/register" class="font-medium text-primary hover:underline">Regístrate</a>
+		Don't have an account? <a href="/register" class="font-medium text-primary hover:underline">Register</a>
 	</p>
 </form>

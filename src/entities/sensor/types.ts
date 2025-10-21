@@ -1,17 +1,17 @@
 export type SensorType = 
-  | "temperatura" 
-  | "presión" 
-  | "humedad" 
-  | "luminosidad" 
+  | "temperature" 
+  | "pressure" 
+  | "humidity" 
+  | "luminosity" 
   | "co2" 
-  | "movimiento" 
-  | "vibración";
+  | "motion" 
+  | "vibration";
 
 export interface Sensor {
   id: string;
-  nombre: string;
-  tipo: SensorType;
-  valor: number;
-  estado: boolean;
+  name: string;
+  type: SensorType;
+  value: number;
+  active: boolean;
 }
 

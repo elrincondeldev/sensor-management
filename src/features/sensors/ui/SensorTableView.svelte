@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Sensor, SensorType } from '@entities/sensor/types';
 	import { Badge } from '$lib/components/ui/badge';
+	import { Button } from '$lib/components/ui/button';
 	import {
 		Table,
 		TableBody,
@@ -12,16 +13,18 @@
 	import { getSensorTypeLabel, getValueColor, getUnit } from '../lib/sensor-utils';
 
 	interface Props {
-		tipo: SensorType;
+		type: SensorType;
 		sensors: Sensor[];
-		sortBy: 'nombre' | 'valor' | 'estado';
+		sortBy: 'name' | 'value' | 'active';
 		sortOrder: 'asc' | 'desc';
-		onSort: (column: 'nombre' | 'valor' | 'estado') => void;
+		onSort: (column: 'name' | 'value' | 'active') => void;
+		onEdit?: (sensor: Sensor) => void;
+		onDelete?: (sensor: Sensor) => void;
 	}
 
-	let { tipo, sensors, sortBy, sortOrder, onSort }: Props = $props();
+	let { type, sensors, sortBy, sortOrder, onSort, onEdit, onDelete }: Props = $props();
 
-	function getSortIcon(column: 'nombre' | 'valor' | 'estado') {
+	function getSortIcon(column: 'name' | 'value' | 'active') {
 		if (sortBy !== column) return '↕';
 		return sortOrder === 'asc' ? '↑' : '↓';
 	}
@@ -30,10 +33,10 @@
 <div class="space-y-4">
 	<div class="flex items-center gap-3">
 		<div>
-			<h3 class="text-2xl font-bold">{getSensorTypeLabel(tipo)}</h3>
+			<h3 class="text-2xl font-bold">{getSensorTypeLabel(type)}</h3>
 			<p class="text-sm text-muted-foreground">
-				{sensors.length} {sensors.length === 1 ? 'sensor' : 'sensores'}
-				· Unidad: {getUnit(tipo)}
+				{sensors.length} {sensors.length === 1 ? 'sensor' : 'sensors'}
+				· Unit: {getUnit(type)}
 			</p>
 		</div>
 	</div>
@@ -45,46 +48,69 @@
 					<TableHead>
 						<button
 							class="flex items-center gap-1 hover:underline"
-							onclick={() => onSort('nombre')}
+							onclick={() => onSort('name')}
 						>
-							Nombre {getSortIcon('nombre')}
+							Name {getSortIcon('name')}
 						</button>
 					</TableHead>
 					<TableHead>
 						<button
 							class="flex items-center gap-1 hover:underline"
-							onclick={() => onSort('valor')}
+							onclick={() => onSort('value')}
 						>
-							Valor {getSortIcon('valor')}
+							Value {getSortIcon('value')}
 						</button>
 					</TableHead>
 					<TableHead>
 						<button
 							class="flex items-center gap-1 hover:underline"
-							onclick={() => onSort('estado')}
+							onclick={() => onSort('active')}
 						>
-							Estado {getSortIcon('estado')}
+							Status {getSortIcon('active')}
 						</button>
 					</TableHead>
 					<TableHead>ID</TableHead>
+					<TableHead class="text-right">Actions</TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>
 				{#each sensors as sensor (sensor.id)}
 					<TableRow>
-						<TableCell class="font-medium">{sensor.nombre}</TableCell>
+						<TableCell class="font-medium min-w-[8rem] max-w-[12rem]">{sensor.name}</TableCell>
 						<TableCell>
-							<span class={getValueColor(sensor.tipo, sensor.valor)}>
-								{sensor.valor.toFixed(1)} {getUnit(sensor.tipo)}
+							<span class={getValueColor(sensor.type, sensor.value)}>
+								{sensor.value.toFixed(1)} {getUnit(sensor.type)}
 							</span>
 						</TableCell>
 						<TableCell>
-							<Badge variant={sensor.estado ? 'success' : 'destructive'}>
-								{sensor.estado ? 'Activo' : 'Inactivo'}
+							<Badge variant={sensor.active ? 'success' : 'destructive'}>
+								{sensor.active ? 'Active' : 'Inactive'}
 							</Badge>
 						</TableCell>
 						<TableCell class="text-muted-foreground text-xs">
 							{sensor.id}
+						</TableCell>
+						<TableCell class="text-right">
+							<div class="flex justify-end gap-2">
+								{#if onEdit}
+									<Button
+										size="sm"
+										variant="ghost"
+										onclick={() => onEdit(sensor)}
+									>
+										Edit
+									</Button>
+								{/if}
+								{#if onDelete}
+									<Button
+										size="sm"
+										variant="ghost"
+										onclick={() => onDelete(sensor)}
+									>
+										Delete
+									</Button>
+								{/if}
+							</div>
 						</TableCell>
 					</TableRow>
 				{/each}

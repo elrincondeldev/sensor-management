@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { authStore, isAuthenticated, refreshAuth } from '@features/auth/model/store';
-	import { addMockSensors, logoutUser } from '@shared/lib/hooks/localStorage';
+	import { logoutUser } from '@/shared/lib/hooks/authStorage';
+	import { initializeMockSensors } from '$lib/hooks/sensorStorage';
     import { Button } from '$lib/components/ui/button';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
 		refreshAuth();
-		addMockSensors();
+		initializeMockSensors();
 	});
 
 	function handleLogout() {
@@ -34,11 +35,11 @@
 						</span>
 					</div>
 				</div>
-				<Button variant="outline" size="sm" onclick={handleLogout}>Cerrar sesión</Button>
+				<Button variant="outline" size="sm" onclick={handleLogout}>Logout</Button>
 			{:else}
 				<div class="flex gap-2">
-					<Button href="/login" variant="ghost" size="sm">Iniciar sesión</Button>
-					<Button href="/register" size="sm">Registrarse</Button>
+					<Button href="/login" variant="ghost" size="sm">Login</Button>
+					<Button href="/register" size="sm">Register</Button>
 				</div>
 			{/if}
 		</div>

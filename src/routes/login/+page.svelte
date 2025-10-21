@@ -11,15 +11,15 @@
 </script>
 
 <svelte:head>
-	<title>Iniciar sesión</title>
+	<title>Login</title>
 </svelte:head>
 
 <div class="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12">
 	<div class="w-full max-w-md">
 		<Card>
 			<CardHeader>
-				<CardTitle>Iniciar sesión</CardTitle>
-				<CardDescription>Ingresa tu email y contraseña para acceder</CardDescription>
+				<CardTitle>Login</CardTitle>
+				<CardDescription>Enter your email and password to access</CardDescription>
 			</CardHeader>
 			<CardContent>
 				<LoginForm />

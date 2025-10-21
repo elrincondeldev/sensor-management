@@ -5,12 +5,9 @@ import type {
   RegisterData,
   StoredAuthUser,
 } from "../../../features/auth/model/types";
-import type { Sensor } from "../../../entities/sensor/types";
-import mockSensors from "../mock/sensors.json";
 
 const AUTH_STORAGE_KEY = "auth_user";
 const USERS_STORAGE_KEY = "registered_users";
-const SENSORS_STORAGE_KEY = "sensors";
 
 export function registerUser(data: RegisterData): User {
   const users = getRegisteredUsers();
@@ -81,6 +78,10 @@ export function logoutUser(): void {
 }
 
 function getRegisteredUsers(): User[] {
+  if (!browser) {
+    return [];
+  }
+
   try {
     const stored = localStorage.getItem(USERS_STORAGE_KEY);
     if (!stored) return [];
@@ -95,31 +96,4 @@ function getRegisteredUsers(): User[] {
     console.error("Error al obtener usuarios registrados:", error);
     return [];
   }
-}
-
-export function getSensors(): Sensor[] {
-  if (!browser) {
-    return mockSensors as Sensor[];
-  }
-
-  try {
-    const stored = localStorage.getItem(SENSORS_STORAGE_KEY);
-    if (!stored) return mockSensors as Sensor[];
-
-    const sensors = JSON.parse(stored);
-
-    return sensors;
-  } catch (error) {
-    console.error("Error al obtener sensores:", error);
-    return mockSensors as Sensor[];
-  }
-}
-
-export function addMockSensors(): void {
-  if (!browser) return;
-  
-  const sensors = getSensors();
-  if (sensors.length > 0) return;
-
-  localStorage.setItem(SENSORS_STORAGE_KEY, JSON.stringify(mockSensors));
 }
