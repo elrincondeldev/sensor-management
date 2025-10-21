@@ -34,7 +34,6 @@ class NATSSimulator {
     }
     this.subscribers.get(subject)!.add(callback);
 
-    // Retornar función para cancelar suscripción
     return () => {
       this.subscribers.get(subject)?.delete(callback);
     };
