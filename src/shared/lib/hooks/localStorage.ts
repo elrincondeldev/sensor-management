@@ -1,3 +1,4 @@
+import { browser } from '$app/environment';
 import type { User } from "../../../entities/user/types";
 import type {
   LoginData,
@@ -97,20 +98,26 @@ function getRegisteredUsers(): User[] {
 }
 
 export function getSensors(): Sensor[] {
+  if (!browser) {
+    return mockSensors as Sensor[];
+  }
+
   try {
     const stored = localStorage.getItem(SENSORS_STORAGE_KEY);
-    if (!stored) return [];
+    if (!stored) return mockSensors as Sensor[];
 
     const sensors = JSON.parse(stored);
 
     return sensors;
   } catch (error) {
     console.error("Error al obtener sensores:", error);
-    return [];
+    return mockSensors as Sensor[];
   }
 }
 
 export function addMockSensors(): void {
+  if (!browser) return;
+  
   const sensors = getSensors();
   if (sensors.length > 0) return;
 
