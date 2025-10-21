@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { authStore, isAuthenticated, refreshAuth } from '@features/auth/model/store';
-	import { logoutUser } from '@shared/lib/hooks/localStorage';
+	import { addMockSensors, logoutUser } from '@shared/lib/hooks/localStorage';
     import { Button } from '$lib/components/ui/button';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
 		refreshAuth();
+		addMockSensors();
 	});
 
 	function handleLogout() {
