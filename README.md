@@ -2,6 +2,11 @@
 
 Una para la gestión de sensores en tiempo real con comunicación mediante NATS.
 
+## 🚢 Despliegue
+
+Puedes probar la aplicación desplegada aquí:  
+[https://sensor-management-lx7ccs6z3-jmontes33s-projects.vercel.app/](https://sensor-management-lx7ccs6z3-jmontes33s-projects.vercel.app/)
+
 ## 📋 Descripción
 
 Esta aplicación te permite visualizar, crear, editar y eliminar sensores con actualización en tiempo real. Cualquier cambio realizado se reflejará instantáneamente en todas las pantallas abiertas gracias a la comunicación mediante el protocolo NATS.
